@@ -73,7 +73,7 @@ public class S3ContentRepository implements ContentRepository {
     }
 
     @Override
-    public void deleteFile(final String documentName, final String documentPath) {
+    public void deleteFile(final String documentPath) {
         deleteObject(documentPath);
     }
 
@@ -99,27 +99,32 @@ public class S3ContentRepository implements ContentRepository {
     }
 
     @Override
-    public void deleteImage(final Long resourceId, final String location) {
+    public void deleteImage(final String location) {
         deleteObject(location);
     }
 
     @Override
     public FileData fetchFile(final DocumentData documentData) throws DocumentNotFoundException {
-        final S3Object s3object = getObject(documentData.fileLocation());
-        return new FileData(s3object.getObjectContent(), documentData.fileName(), documentData.contentType());
+        return new FileData(new ByteSource() {
+
+            @Override
+            public InputStream openStream() throws IOException {
+                final S3Object s3object = getObject(documentData.fileLocation());
+                return s3object.getObjectContent();
+            }
+        }, documentData.fileName(), documentData.contentType());
     }
 
     @Override
-    public ImageData fetchImage(final ImageData imageData) {
-        imageData.updateContent(new ByteSource() {
+    public FileData fetchImage(final ImageData imageData) {
+        return new FileData(new ByteSource() {
 
             @Override
             public InputStream openStream() throws IOException {
                 final S3Object s3object = getObject(imageData.location());
                 return s3object.getObjectContent();
             }
-        });
-        return imageData;
+        }, imageData.getEntityDisplayName(), imageData.contentType().getValue());
     }
 
     @Override
