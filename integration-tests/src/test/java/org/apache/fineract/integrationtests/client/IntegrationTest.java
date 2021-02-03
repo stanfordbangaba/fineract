@@ -63,7 +63,7 @@ public abstract class IntegrationTest {
         if (fineract == null) {
             String url = System.getProperty("fineract.it.url", "https://localhost:8443/fineract-provider/api/v1/");
             // insecure(true) should *ONLY* ever be used for https://localhost:8443, NOT in real clients!!
-            fineract = FineractClient.builder().insecure(true).baseURL(url).tenant("default").basicAuth("mifos", "password")
+            fineract = FineractClient.builder().insecure(true).baseURL(url).tenant("default").basicAuth("esol", "password")
                     .logging(Level.NONE).build();
         }
         return fineract;

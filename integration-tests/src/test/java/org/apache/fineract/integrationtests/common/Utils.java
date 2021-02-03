@@ -120,7 +120,7 @@ public final class Utils {
         try {
             LOG.info("Logging in, for integration test...");
             // system.out.println("-----------------------------------LOGIN-----------------------------------------");
-            String json = RestAssured.given().contentType(ContentType.JSON).body("{\"username\":\"mifos\", \"password\":\"password\"}")
+            String json = RestAssured.given().contentType(ContentType.JSON).body("{\"username\":\"esol\", \"password\":\"password\"}")
                     .expect().log().ifError().when().post(LOGIN_URL).asString();
             assertThat("Failed to login into fineract platform", StringUtils.isBlank(json), is(false));
             String key = JsonPath.with(json).get("base64EncodedAuthenticationKey");

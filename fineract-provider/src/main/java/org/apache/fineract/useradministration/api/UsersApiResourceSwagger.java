@@ -42,7 +42,7 @@ final class UsersApiResourceSwagger {
 
         @Schema(example = "1")
         public Long id;
-        @Schema(example = "mifos")
+        @Schema(example = "esol")
         public String username;
         @Schema(example = "1")
         public Long officeId;
@@ -70,7 +70,7 @@ final class UsersApiResourceSwagger {
 
         @Schema(example = "1")
         public Long id;
-        @Schema(example = "mifos")
+        @Schema(example = "esol")
         public String username;
         @Schema(example = "1")
         public Long officeId;

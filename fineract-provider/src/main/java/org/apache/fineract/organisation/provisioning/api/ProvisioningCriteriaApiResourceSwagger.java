@@ -67,7 +67,7 @@ final class ProvisioningCriteriaApiResourceSwagger {
         public Long criteriaId;
         @Schema(example = "High Risk Products Criteria")
         public String criteriaName;
-        @Schema(example = "mifos")
+        @Schema(example = "esol")
         public String createdBy;
     }
 
@@ -82,7 +82,7 @@ final class ProvisioningCriteriaApiResourceSwagger {
         public Long criteriaId;
         @Schema(example = "High Risk Products Criteria")
         public String criteriaName;
-        @Schema(example = "mifos")
+        @Schema(example = "esol")
         public String createdBy;
         public Collection<LoanProductData> loanProducts;
         public Collection<ProvisioningCriteriaDefinitionData> provisioningcriteria;

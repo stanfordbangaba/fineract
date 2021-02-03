@@ -17,4 +17,4 @@
 -- under the License.
 --
 
-DELETE FROM `m_field_configuration`  WHERE field = 'street';
+-- DELETE FROM `m_field_configuration`  WHERE field = 'street';

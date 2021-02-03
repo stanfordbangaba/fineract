@@ -78,11 +78,11 @@ final class FloatingRatesApiResourceSwagger {
         public Boolean isBaseLendingRate;
         @Schema(example = "true")
         public Boolean isActive;
-        @Schema(example = "mifos")
+        @Schema(example = "esol")
         public String createdBy;
         @Schema(example = "Nov 18, 2015")
         public String createdOn;
-        @Schema(example = "mifos")
+        @Schema(example = "esol")
         public String modifiedBy;
         @Schema(example = "Nov 18, 2015")
         public String modifiedOn;
@@ -107,11 +107,11 @@ final class FloatingRatesApiResourceSwagger {
             public Boolean isDifferentialToBaseLendingRate;
             @Schema(example = "true")
             public Boolean isActive;
-            @Schema(example = "mifos")
+            @Schema(example = "esol")
             public String createdBy;
             @Schema(example = "Nov 18, 2015")
             public String createdOn;
-            @Schema(example = "mifos")
+            @Schema(example = "esol")
             public String modifiedBy;
             @Schema(example = "Nov 18, 2015")
             public String modifiedOn;
@@ -125,11 +125,11 @@ final class FloatingRatesApiResourceSwagger {
         public Boolean isBaseLendingRate;
         @Schema(example = "true")
         public Boolean isActive;
-        @Schema(example = "mifos")
+        @Schema(example = "esol")
         public String createdBy;
         @Schema(example = "Nov 18, 2015")
         public String createdOn;
-        @Schema(example = "mifos")
+        @Schema(example = "esol")
         public String modifiedBy;
         @Schema(example = "Nov 18, 2015")
         public String modifiedOn;

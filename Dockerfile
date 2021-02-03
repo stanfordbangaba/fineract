@@ -15,7 +15,7 @@
 # specific language governing permissions and limitations
 # under the License.
 #
-FROM openjdk:11 AS builder
+FROM ppc64le/openjdk:11 AS builder
 
 RUN apt-get update -qq && apt-get install -y wget
 
@@ -37,7 +37,7 @@ RUN wget -q https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.20/mys
 
 # =========================================
 
-FROM gcr.io/distroless/java:11 as fineract
+FROM datanese/gcr.io/distroless/java:11 as fineract
 
 COPY --from=builder /fineract/target/BOOT-INF/lib /app/lib
 COPY --from=builder /fineract/target/META-INF /app/META-INF

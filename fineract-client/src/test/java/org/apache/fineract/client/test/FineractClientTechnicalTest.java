@@ -34,7 +34,7 @@ public class FineractClientTechnicalTest {
     @Test
     @Disabled // TODO remove Ignore once https://issues.apache.org/jira/browse/FINERACT-1221 is fixed
     void testInvalidOperations() {
-        FineractClient.Builder builder = FineractClient.builder().baseURL("http://test/").tenant("default").basicAuth("mifos", "password");
+        FineractClient.Builder builder = FineractClient.builder().baseURL("http://test/").tenant("default").basicAuth("esol", "password");
         builder.getRetrofitBuilder().validateEagerly(true); // see FINERACT-1221
         builder.build();
     }

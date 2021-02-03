@@ -89,7 +89,7 @@ final class AccountsApiResourceSwagger {
 
             @Schema(example = "[2016, 4, 1]")
             public LocalDate submittedOnDate;
-            @Schema(example = "mifos")
+            @Schema(example = "esol")
             public String submittedByUsername;
             @Schema(example = "App")
             public String submittedByFirstname;
@@ -97,7 +97,7 @@ final class AccountsApiResourceSwagger {
             public String submittedByLastname;
             @Schema(example = "[2016, 4, 1]")
             public LocalDate approvedDate;
-            @Schema(example = "mifos")
+            @Schema(example = "esol")
             public String approvedByUsername;
             @Schema(example = "App")
             public String approvedByFirstname;

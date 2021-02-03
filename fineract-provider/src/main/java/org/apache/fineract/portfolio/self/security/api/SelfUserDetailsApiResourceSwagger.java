@@ -58,7 +58,7 @@ final class SelfUserDetailsApiResourceSwagger {
             public String description;
         }
 
-        @Schema(example = "mifos")
+        @Schema(example = "esol")
         public String username;
         @Schema(example = "1")
         public Integer userId;

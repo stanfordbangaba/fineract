@@ -20,7 +20,7 @@ curl [--insecure] --location --request POST \
 'https://localhost:8443/fineract-provider/api/oauth/token' \
 --header 'Fineract-Platform-TenantId: default' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
---data-urlencode 'username=mifos' \
+--data-urlencode 'username=esol' \
 --data-urlencode 'password=password' \
 --data-urlencode 'client_id=community-app' \
 --data-urlencode 'grant_type=password' \
