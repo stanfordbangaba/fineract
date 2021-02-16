@@ -650,4 +650,13 @@ public final class JsonCommand {
         this.fromApiJsonHelper.checkForUnsupportedParameters(typeOfMap, json, requestDataParameters);
     }
 
+    @Override
+    public String toString() {
+        String value = "JsonCommand{" + "jsonCommand='" + jsonCommand + '\'' + ", parsedCommand=" + parsedCommand + ", fromApiJsonHelper="
+                + fromApiJsonHelper + ", commandId=" + commandId + ", resourceId=" + resourceId + ", subresourceId=" + subresourceId
+                + ", groupId=" + groupId + ", clientId=" + clientId + ", loanId=" + loanId + ", savingsId=" + savingsId + ", entityName='"
+                + entityName + '\'' + ", transactionId='" + transactionId + '\'' + ", url='" + url + '\'' + ", productId=" + productId
+                + ", creditBureauId=" + creditBureauId + ", organisationCreditBureauId=" + organisationCreditBureauId + '}';
+        return value;
+    }
 }

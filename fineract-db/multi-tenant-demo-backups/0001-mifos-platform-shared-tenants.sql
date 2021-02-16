@@ -66,7 +66,7 @@ CREATE TABLE `tenants` (
 
 LOCK TABLES `tenants` WRITE;
 /*!40000 ALTER TABLE `tenants` DISABLE KEYS */;
-INSERT INTO `tenants` VALUES (1,'default','Default Demo Tenant','fineract_default','Asia/Kolkata',NULL,NULL,NULL,NULL,'localhost','3306','root','mysql',1);
+INSERT INTO `tenants` VALUES (1,'default','Default Demo Tenant','fineract_default','Africa/Harare',NULL,NULL,NULL,NULL,'localhost','3306','root','mysql',1);
 /*!40000 ALTER TABLE `tenants` ENABLE KEYS */;
 UNLOCK TABLES;
 

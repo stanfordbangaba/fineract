@@ -62,7 +62,7 @@ public final class Utils {
     public static final String DEFAULT_TENANT = "default";
     public static final String TENANT_IDENTIFIER = TENANT_PARAM_NAME + '=' + DEFAULT_TENANT;
 
-    public static final String TENANT_TIME_ZONE = "Asia/Kolkata";
+    public static final String TENANT_TIME_ZONE = "Africa/Harare";
 
     private static final String HEALTH_URL = "/fineract-provider/actuator/health";
     private static final String LOGIN_URL = "/fineract-provider/api/v1/authentication?" + TENANT_IDENTIFIER;
