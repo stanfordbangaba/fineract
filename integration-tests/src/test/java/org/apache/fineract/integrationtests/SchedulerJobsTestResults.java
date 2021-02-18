@@ -156,7 +156,7 @@ public class SchedulerJobsTestResults {
         ArrayList<Integer> annualFeeDueDateAsArrayList = (ArrayList<Integer>) annualFeeDetails.get("dueDate");
         LocalDate nextDueDateForAnnualFee = LocalDate.of(annualFeeDueDateAsArrayList.get(0), annualFeeDueDateAsArrayList.get(1),
                 annualFeeDueDateAsArrayList.get(2));
-        LocalDate todaysDate = LocalDate.now(ZoneId.of("Asia/Kolkata"));
+        LocalDate todaysDate = LocalDate.now(ZoneId.of("Africa/Harare"));
 
         Assertions.assertTrue(nextDueDateForAnnualFee.isAfter(todaysDate), "Verifying that all due Annual Fees have been paid ");
 

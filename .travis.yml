@@ -52,7 +52,7 @@ before_install:
   - mysql -u root -pmysql -e 'CREATE DATABASE IF NOT EXISTS `fineract_tenants`;'
   - mysql -u root -pmysql -e 'CREATE DATABASE IF NOT EXISTS `fineract_default`;'
 # Hardcoding the time zone is a temporary fix for https://issues.apache.org/jira/browse/FINERACT-723
-  - export TZ=Asia/Kolkata
+  - export TZ=Africa/Harare
 
 # https://docs.travis-ci.com/user/languages/java/#caching
 before_cache:

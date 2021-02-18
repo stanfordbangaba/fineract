@@ -329,4 +329,11 @@ public class Holiday extends AbstractPersistableCustom {
     public RescheduleType getReScheduleType() {
         return RescheduleType.fromInt(this.reschedulingType);
     }
+
+    @Override
+    public String toString() {
+        return "Holiday{" + "name='" + name + '\'' + ", fromDate=" + fromDate + ", toDate=" + toDate + ", repaymentsRescheduledTo="
+                + repaymentsRescheduledTo + ", reschedulingType=" + reschedulingType + ", status=" + status + ", processed=" + processed
+                + ", description='" + description + '\'' + '}';
+    }
 }
