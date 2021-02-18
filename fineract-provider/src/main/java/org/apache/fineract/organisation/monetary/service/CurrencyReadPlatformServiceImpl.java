@@ -18,6 +18,7 @@
  */
 package org.apache.fineract.organisation.monetary.service;
 
+import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
@@ -78,7 +79,7 @@ public class CurrencyReadPlatformServiceImpl implements CurrencyReadPlatformServ
             final String code = rs.getString("code");
             final String name = rs.getString("name");
             final int decimalPlaces = JdbcSupport.getInteger(rs, "decimalPlaces");
-            final Integer inMultiplesOf = JdbcSupport.getInteger(rs, "inMultiplesOf");
+            final BigDecimal inMultiplesOf = JdbcSupport.getBigDecimalDefaultToZeroIfNull(rs, "inMultiplesOf");
             final String displaySymbol = rs.getString("displaySymbol");
             final String nameCode = rs.getString("nameCode");
 

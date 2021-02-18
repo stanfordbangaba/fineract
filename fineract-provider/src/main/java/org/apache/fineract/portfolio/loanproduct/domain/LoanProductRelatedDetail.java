@@ -290,7 +290,7 @@ public class LoanProductRelatedDetail implements LoanProductMinimumRepaymentSche
 
         String currencyCode = this.currency.getCode();
         Integer digitsAfterDecimal = this.currency.getDigitsAfterDecimal();
-        Integer inMultiplesOf = this.currency.getCurrencyInMultiplesOf();
+        BigDecimal inMultiplesOf = this.currency.getCurrencyInMultiplesOf();
 
         final String digitsAfterDecimalParamName = "digitsAfterDecimal";
         if (command.isChangeInIntegerParameterNamed(digitsAfterDecimalParamName, digitsAfterDecimal)) {
@@ -311,7 +311,7 @@ public class LoanProductRelatedDetail implements LoanProductMinimumRepaymentSche
 
         final String inMultiplesOfParamName = "inMultiplesOf";
         if (command.isChangeInStringParameterNamed(inMultiplesOfParamName, currencyCode)) {
-            final Integer newValue = command.integerValueOfParameterNamed(inMultiplesOfParamName);
+            final BigDecimal newValue = command.bigDecimalValueOfParameterNamed(inMultiplesOfParamName);
             actualChanges.put(inMultiplesOfParamName, newValue);
             inMultiplesOf = newValue;
             this.currency = new MonetaryCurrency(currencyCode, digitsAfterDecimal, inMultiplesOf);

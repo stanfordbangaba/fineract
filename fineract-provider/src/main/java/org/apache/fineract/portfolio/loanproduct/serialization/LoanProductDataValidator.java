@@ -174,8 +174,8 @@ public final class LoanProductDataValidator {
         final Integer digitsAfterDecimal = this.fromApiJsonHelper.extractIntegerNamed("digitsAfterDecimal", element, Locale.getDefault());
         baseDataValidator.reset().parameter("digitsAfterDecimal").value(digitsAfterDecimal).notNull().inMinMaxRange(0, 6);
 
-        final Integer inMultiplesOf = this.fromApiJsonHelper.extractIntegerNamed("inMultiplesOf", element, Locale.getDefault());
-        baseDataValidator.reset().parameter("inMultiplesOf").value(inMultiplesOf).ignoreIfNull().integerZeroOrGreater();
+        final BigDecimal inMultiplesOf = this.fromApiJsonHelper.extractBigDecimalNamed("inMultiplesOf", element, Locale.getDefault());
+        baseDataValidator.reset().parameter("inMultiplesOf").value(inMultiplesOf).ignoreIfNull().notLessThanMin(BigDecimal.ZERO);
 
         final BigDecimal principal = this.fromApiJsonHelper.extractBigDecimalWithLocaleNamed("principal", element);
         baseDataValidator.reset().parameter("principal").value(principal).positiveAmount();
@@ -522,11 +522,19 @@ public final class LoanProductDataValidator {
                     .isOneOfTheseValues(true, false);
         }
 
+        // if (this.fromApiJsonHelper.parameterExists(LoanProductConstants.installmentAmountInMultiplesOfParamName,
+        // element)) {
+        // final Integer installmentAmountInMultiplesOf = this.fromApiJsonHelper
+        // .extractIntegerWithLocaleNamed(LoanProductConstants.installmentAmountInMultiplesOfParamName, element);
+        // baseDataValidator.reset().parameter(LoanProductConstants.installmentAmountInMultiplesOfParamName)
+        // .value(installmentAmountInMultiplesOf).ignoreIfNull().integerGreaterThanZero();
+        // }
+
         if (this.fromApiJsonHelper.parameterExists(LoanProductConstants.installmentAmountInMultiplesOfParamName, element)) {
-            final Integer installmentAmountInMultiplesOf = this.fromApiJsonHelper
-                    .extractIntegerWithLocaleNamed(LoanProductConstants.installmentAmountInMultiplesOfParamName, element);
+            final BigDecimal installmentAmountInMultiplesOf = this.fromApiJsonHelper
+                    .extractBigDecimalWithLocaleNamed(LoanProductConstants.installmentAmountInMultiplesOfParamName, element);
             baseDataValidator.reset().parameter(LoanProductConstants.installmentAmountInMultiplesOfParamName)
-                    .value(installmentAmountInMultiplesOf).ignoreIfNull().integerGreaterThanZero();
+                    .value(installmentAmountInMultiplesOf).ignoreIfNull().notLessThanMin(BigDecimal.ZERO);
         }
 
         // accounting related data validation
@@ -965,8 +973,8 @@ public final class LoanProductDataValidator {
         }
 
         if (this.fromApiJsonHelper.parameterExists("inMultiplesOf", element)) {
-            final Integer inMultiplesOf = this.fromApiJsonHelper.extractIntegerNamed("inMultiplesOf", element, Locale.getDefault());
-            baseDataValidator.reset().parameter("inMultiplesOf").value(inMultiplesOf).ignoreIfNull().integerZeroOrGreater();
+            final BigDecimal inMultiplesOf = this.fromApiJsonHelper.extractBigDecimalNamed("inMultiplesOf", element, Locale.getDefault());
+            baseDataValidator.reset().parameter("inMultiplesOf").value(inMultiplesOf).ignoreIfNull().notLessThanMin(BigDecimal.ZERO);
         }
 
         final String minPrincipalParameterName = "minPrincipal";
@@ -1348,10 +1356,10 @@ public final class LoanProductDataValidator {
         }
 
         if (this.fromApiJsonHelper.parameterExists(LoanProductConstants.installmentAmountInMultiplesOfParamName, element)) {
-            final Integer installmentAmountInMultiplesOf = this.fromApiJsonHelper
-                    .extractIntegerWithLocaleNamed(LoanProductConstants.installmentAmountInMultiplesOfParamName, element);
+            final BigDecimal installmentAmountInMultiplesOf = this.fromApiJsonHelper
+                    .extractBigDecimalWithLocaleNamed(LoanProductConstants.installmentAmountInMultiplesOfParamName, element);
             baseDataValidator.reset().parameter(LoanProductConstants.installmentAmountInMultiplesOfParamName)
-                    .value(installmentAmountInMultiplesOf).ignoreIfNull().integerGreaterThanZero();
+                    .value(installmentAmountInMultiplesOf).ignoreIfNull().notLessThanMin(BigDecimal.ZERO);
         }
 
         final Integer accountingRuleType = this.fromApiJsonHelper.extractIntegerNamed("accountingRule", element, Locale.getDefault());

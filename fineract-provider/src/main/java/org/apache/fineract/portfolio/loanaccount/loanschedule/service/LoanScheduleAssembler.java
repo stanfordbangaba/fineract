@@ -389,7 +389,7 @@ public class LoanScheduleAssembler {
 
         final BigDecimal principalThresholdForLastInstalment = loanProduct.getPrincipalThresholdForLastInstallment();
 
-        final Integer installmentAmountInMultiplesOf = loanProduct.getInstallmentAmountInMultiplesOf();
+        final BigDecimal installmentAmountInMultiplesOf = loanProduct.getInstallmentAmountInMultiplesOf();
 
         List<LoanTermVariationsData> loanTermVariations = new ArrayList<>();
         if (loanProduct.isLinkedToFloatingInterestRate()) {

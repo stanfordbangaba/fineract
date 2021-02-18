@@ -529,7 +529,7 @@ public class Charge extends AbstractPersistableCustom {
             taxGroupData = TaxGroupData.lookup(taxGroup.getId(), taxGroup.getName());
         }
 
-        final CurrencyData currency = new CurrencyData(this.currencyCode, null, 0, 0, null, null);
+        final CurrencyData currency = new CurrencyData(this.currencyCode, null, 0, BigDecimal.ZERO, null, null);
         return ChargeData.instance(getId(), this.name, this.amount, currency, chargeTimeType, chargeAppliesTo, chargeCalculationType,
                 chargePaymentmode, getFeeOnMonthDay(), this.feeInterval, this.penalty, this.active, this.minCap, this.maxCap,
                 feeFrequencyType, accountData, taxGroupData);

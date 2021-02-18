@@ -242,7 +242,7 @@ public class ShareProductReadPlatformServiceImpl implements ProductReadPlatformS
             final String currencyName = rs.getString("currencyName");
             final String currencyNameCode = rs.getString("currencyNameCode");
             final String currencyDisplaySymbol = rs.getString("currencyDisplaySymbol");
-            final Integer inMultiplesOf = JdbcSupport.getInteger(rs, "currency_multiplesof");
+            final BigDecimal inMultiplesOf = JdbcSupport.getBigDecimalDefaultToZeroIfNull(rs, "currency_multiplesof");
             final CurrencyData currency = new CurrencyData(currencyCode, currencyName, currencyDigits, inMultiplesOf, currencyDisplaySymbol,
                     currencyNameCode);
 

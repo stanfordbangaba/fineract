@@ -164,7 +164,7 @@ public class LoanProduct extends AbstractPersistableCustom {
     private boolean canDefineInstallmentAmount;
 
     @Column(name = "instalment_amount_in_multiples_of", nullable = true)
-    private Integer installmentAmountInMultiplesOf;
+    private BigDecimal installmentAmountInMultiplesOf;
 
     @Column(name = "is_linked_to_floating_interest_rates", nullable = false)
     private boolean isLinkedToFloatingInterestRate;
@@ -196,7 +196,7 @@ public class LoanProduct extends AbstractPersistableCustom {
         final String description = command.stringValueOfParameterNamed("description");
         final String currencyCode = command.stringValueOfParameterNamed("currencyCode");
         final Integer digitsAfterDecimal = command.integerValueOfParameterNamed("digitsAfterDecimal");
-        final Integer inMultiplesOf = command.integerValueOfParameterNamed("inMultiplesOf");
+        final BigDecimal inMultiplesOf = command.bigDecimalValueOfParameterNamed("inMultiplesOf");
 
         final MonetaryCurrency currency = new MonetaryCurrency(currencyCode, digitsAfterDecimal, inMultiplesOf);
         final BigDecimal principal = command.bigDecimalValueOfParameterNamed("principal");
@@ -332,8 +332,8 @@ public class LoanProduct extends AbstractPersistableCustom {
         final boolean accountMovesOutOfNPAOnlyOnArrearsCompletion = command
                 .booleanPrimitiveValueOfParameterNamed(LoanProductConstants.ACCOUNT_MOVES_OUT_OF_NPA_ONLY_ON_ARREARS_COMPLETION_PARAM_NAME);
         final boolean canDefineEmiAmount = command.booleanPrimitiveValueOfParameterNamed(LoanProductConstants.canDefineEmiAmountParamName);
-        final Integer installmentAmountInMultiplesOf = command
-                .integerValueOfParameterNamed(LoanProductConstants.installmentAmountInMultiplesOfParamName);
+        final BigDecimal installmentAmountInMultiplesOf = command
+                .bigDecimalValueOfParameterNamed(LoanProductConstants.installmentAmountInMultiplesOfParamName);
 
         final boolean syncExpectedWithDisbursementDate = command.booleanPrimitiveValueOfParameterNamed("syncExpectedWithDisbursementDate");
 
@@ -588,7 +588,7 @@ public class LoanProduct extends AbstractPersistableCustom {
             final Integer minimumDaysBetweenDisbursalAndFirstRepayment, final boolean holdGuarantorFunds,
             final LoanProductGuaranteeDetails loanProductGuaranteeDetails, final BigDecimal principalThresholdForLastInstallment,
             final boolean accountMovesOutOfNPAOnlyOnArrearsCompletion, final boolean canDefineEmiAmount,
-            final Integer installmentAmountInMultiplesOf, final LoanProductConfigurableAttributes loanProductConfigurableAttributes,
+            final BigDecimal installmentAmountInMultiplesOf, final LoanProductConfigurableAttributes loanProductConfigurableAttributes,
             Boolean isLinkedToFloatingInterestRates, FloatingRate floatingRate, BigDecimal interestRateDifferential,
             BigDecimal minDifferentialLendingRate, BigDecimal maxDifferentialLendingRate, BigDecimal defaultDifferentialLendingRate,
             Boolean isFloatingInterestRateCalculationAllowed, final Boolean isVariableInstallmentsAllowed,
@@ -1071,9 +1071,10 @@ public class LoanProduct extends AbstractPersistableCustom {
             this.canDefineInstallmentAmount = newValue;
         }
 
-        if (command.isChangeInIntegerParameterNamedWithNullCheck(LoanProductConstants.installmentAmountInMultiplesOfParamName,
+        if (command.isChangeInBigDecimalParameterNamedWithNullCheck(LoanProductConstants.installmentAmountInMultiplesOfParamName,
                 this.installmentAmountInMultiplesOf)) {
-            final Integer newValue = command.integerValueOfParameterNamed(LoanProductConstants.installmentAmountInMultiplesOfParamName);
+            final BigDecimal newValue = command
+                    .bigDecimalValueOfParameterNamed(LoanProductConstants.installmentAmountInMultiplesOfParamName);
             actualChanges.put(LoanProductConstants.installmentAmountInMultiplesOfParamName, newValue);
             actualChanges.put("locale", localeAsInput);
             this.installmentAmountInMultiplesOf = newValue;
@@ -1386,7 +1387,7 @@ public class LoanProduct extends AbstractPersistableCustom {
         return this.canDefineInstallmentAmount;
     }
 
-    public Integer getInstallmentAmountInMultiplesOf() {
+    public BigDecimal getInstallmentAmountInMultiplesOf() {
         return this.installmentAmountInMultiplesOf;
     }
 
