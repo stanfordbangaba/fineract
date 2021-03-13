@@ -169,12 +169,12 @@ public class AppUserWritePlatformServiceJpaRepositoryImpl implements AppUserWrit
             LOG.error("createUser: PlatformEmailSendException", e);
 
             final String email = command.stringValueOfParameterNamed("email");
-            final ApiParameterError error = ApiParameterError.parameterError("error.msg.user.email.invalid",
+            final ApiParameterError error = ApiParameterError.parameterError("error.msg.user.email.server.failed",
                     "Sending email failed; is parameter email is invalid? More details available in server log: " + e.getMessage(), "email",
                     email);
 
-            throw new PlatformApiDataValidationException("validation.msg.validation.errors.exist", "Validation errors exist.",
-                    List.of(error), e);
+            throw new PlatformApiDataValidationException("error.msg.user.email.server.failed",
+                    "Sending email failed. Email configuration wrong. ", List.of(error), e);
         }
     }
 

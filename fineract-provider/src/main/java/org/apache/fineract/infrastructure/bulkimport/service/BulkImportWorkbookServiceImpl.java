@@ -87,6 +87,8 @@ public class BulkImportWorkbookServiceImpl implements BulkImportWorkbookService 
     public Long importWorkbook(String entity, InputStream inputStream, FormDataContentDisposition fileDetail, final String locale,
             final String dateFormat) {
         try {
+            LOG.info("In importWorkbook| Entity: {}, input-stream: {}, file-detail: {}, locale: {}, dateFormat: {}", entity, inputStream,
+                    fileDetail, locale, dateFormat);
             if (entity != null && inputStream != null && fileDetail != null && locale != null && dateFormat != null) {
 
                 final ByteArrayOutputStream baos = new ByteArrayOutputStream();

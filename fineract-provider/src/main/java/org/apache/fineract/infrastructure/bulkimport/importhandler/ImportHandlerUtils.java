@@ -50,6 +50,8 @@ public final class ImportHandlerUtils {
         Integer noOfEntries = 0;
         // getLastRowNum and getPhysicalNumberOfRows showing false values
         // sometimes
+        System.out.println("Sheet is " + sheet);
+        System.out.println("Row is " + sheet.getRow(noOfEntries + 1));
         while (sheet.getRow(noOfEntries + 1) != null && sheet.getRow(noOfEntries + 1).getCell(primaryColumn) != null) {
             noOfEntries++;
         }
