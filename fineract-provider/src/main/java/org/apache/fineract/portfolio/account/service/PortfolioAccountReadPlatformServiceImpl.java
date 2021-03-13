@@ -218,8 +218,8 @@ public class PortfolioAccountReadPlatformServiceImpl implements PortfolioAccount
             final String currencyNameCode = rs.getString("currencyNameCode");
             final String currencyDisplaySymbol = rs.getString("currencyDisplaySymbol");
             final Integer currencyDigits = JdbcSupport.getInteger(rs, "currencyDigits");
-            final Integer inMulitplesOf = JdbcSupport.getInteger(rs, "inMultiplesOf");
-            final CurrencyData currency = new CurrencyData(currencyCode, currencyName, currencyDigits, inMulitplesOf, currencyDisplaySymbol,
+            final BigDecimal inMultiplesOf = JdbcSupport.getBigDecimalDefaultToZeroIfNull(rs, "inMultiplesOf");
+            final CurrencyData currency = new CurrencyData(currencyCode, currencyName, currencyDigits, inMultiplesOf, currencyDisplaySymbol,
                     currencyNameCode);
 
             return new PortfolioAccountData(id, accountNo, externalId, groupId, groupName, clientId, clientName, productId, productName,
@@ -281,9 +281,9 @@ public class PortfolioAccountReadPlatformServiceImpl implements PortfolioAccount
             final String currencyNameCode = rs.getString("currencyNameCode");
             final String currencyDisplaySymbol = rs.getString("currencyDisplaySymbol");
             final Integer currencyDigits = JdbcSupport.getInteger(rs, "currencyDigits");
-            final Integer inMulitplesOf = JdbcSupport.getInteger(rs, "inMultiplesOf");
+            final BigDecimal inMultiplesOf = JdbcSupport.getBigDecimalDefaultToZeroIfNull(rs, "inMultiplesOf");
             final BigDecimal amtForTransfer = JdbcSupport.getBigDecimalDefaultToNullIfZero(rs, "totalOverpaid");
-            final CurrencyData currency = new CurrencyData(currencyCode, currencyName, currencyDigits, inMulitplesOf, currencyDisplaySymbol,
+            final CurrencyData currency = new CurrencyData(currencyCode, currencyName, currencyDigits, inMultiplesOf, currencyDisplaySymbol,
                     currencyNameCode);
 
             return new PortfolioAccountData(id, accountNo, externalId, groupId, groupName, clientId, clientName, productId, productName,
@@ -359,9 +359,9 @@ public class PortfolioAccountReadPlatformServiceImpl implements PortfolioAccount
             final String currencyNameCode = rs.getString("currencyNameCode");
             final String currencyDisplaySymbol = rs.getString("currencyDisplaySymbol");
             final Integer currencyDigits = JdbcSupport.getInteger(rs, "currencyDigits");
-            final Integer inMulitplesOf = JdbcSupport.getInteger(rs, "inMultiplesOf");
+            final BigDecimal inMultiplesOf = JdbcSupport.getBigDecimalDefaultToZeroIfNull(rs, "inMultiplesOf");
             final BigDecimal amtForTransfer = JdbcSupport.getBigDecimalDefaultToNullIfZero(rs, "totalOverpaid");
-            final CurrencyData currency = new CurrencyData(currencyCode, currencyName, currencyDigits, inMulitplesOf, currencyDisplaySymbol,
+            final CurrencyData currency = new CurrencyData(currencyCode, currencyName, currencyDigits, inMultiplesOf, currencyDisplaySymbol,
                     currencyNameCode);
 
             return new PortfolioAccountData(id, accountNo, externalId, groupId, groupName, clientId, clientName, productId, productName,

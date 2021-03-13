@@ -404,9 +404,9 @@ public class SavingsProduct extends AbstractPersistableCustom {
                     this.currency.getCurrencyInMultiplesOf());
         }
 
-        Integer inMultiplesOf = this.currency.getCurrencyInMultiplesOf();
-        if (command.isChangeInIntegerParameterNamed(inMultiplesOfParamName, inMultiplesOf)) {
-            final Integer newValue = command.integerValueOfParameterNamed(inMultiplesOfParamName);
+        BigDecimal inMultiplesOf = this.currency.getCurrencyInMultiplesOf();
+        if (command.isChangeInBigDecimalParameterNamed(inMultiplesOfParamName, inMultiplesOf)) {
+            final BigDecimal newValue = command.bigDecimalValueOfParameterNamed(inMultiplesOfParamName);
             actualChanges.put(inMultiplesOfParamName, newValue);
             actualChanges.put(localeParamName, localeAsInput);
             inMultiplesOf = newValue;

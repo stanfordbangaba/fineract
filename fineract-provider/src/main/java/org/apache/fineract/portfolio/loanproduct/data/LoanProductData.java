@@ -118,7 +118,7 @@ public class LoanProductData implements Serializable {
     private final LoanProductInterestRecalculationData interestRecalculationData;
     private final Integer minimumDaysBetweenDisbursalAndFirstRepayment;
     private final boolean canDefineInstallmentAmount;
-    private final Integer installmentAmountInMultiplesOf;
+    private final BigDecimal installmentAmountInMultiplesOf;
 
     // charges
     private final Collection<ChargeData> charges;
@@ -262,7 +262,7 @@ public class LoanProductData implements Serializable {
         final LoanProductInterestRecalculationData interestRecalculationData = null;
         final Integer minimumDaysBetweenDisbursalAndFirstRepayment = null;
         final boolean canDefineInstallmentAmount = false;
-        final Integer installmentAmountInMultiplesOf = null;
+        final BigDecimal installmentAmountInMultiplesOf = null;
         final LoanProductConfigurableAttributes loanProductConfigurableAttributes = null;
         final boolean syncExpectedWithDisbursementDate = false;
         final boolean canUseForTopup = false;
@@ -357,7 +357,7 @@ public class LoanProductData implements Serializable {
         final BigDecimal principalThresholdForLastInstallment = null;
         final boolean accountMovesOutOfNPAOnlyOnArrearsCompletion = false;
         final boolean canDefineInstallmentAmount = false;
-        final Integer installmentAmountInMultiplesOf = null;
+        final BigDecimal installmentAmountInMultiplesOf = null;
         final LoanProductConfigurableAttributes loanProductConfigurableAttributes = null;
         final boolean syncExpectedWithDisbursementDate = false;
         final boolean canUseForTopup = false;
@@ -460,7 +460,7 @@ public class LoanProductData implements Serializable {
         final BigDecimal principalThresholdForLastInstallment = null;
         final boolean accountMovesOutOfNPAOnlyOnArrearsCompletion = false;
         final boolean canDefineInstallmentAmount = false;
-        final Integer installmentAmountInMultiplesOf = null;
+        final BigDecimal installmentAmountInMultiplesOf = null;
         final LoanProductConfigurableAttributes loanProductConfigurableAttributes = null;
         final boolean syncExpectedWithDisbursementDate = false;
         final boolean canUseForTopup = false;
@@ -558,7 +558,7 @@ public class LoanProductData implements Serializable {
         final BigDecimal principalThresholdForLastInstallment = null;
         final boolean accountMovesOutOfNPAOnlyOnArrearsCompletion = false;
         final boolean canDefineInstallmentAmount = false;
-        final Integer installmentAmountInMultiplesOf = null;
+        final BigDecimal installmentAmountInMultiplesOf = null;
         final LoanProductConfigurableAttributes loanProductConfigurableAttributes = null;
         final boolean syncExpectedWithDisbursementDate = false;
         final boolean canUseForTopup = false;
@@ -618,7 +618,7 @@ public class LoanProductData implements Serializable {
             final Integer minimumDaysBetweenDisbursalAndFirstRepayment, boolean holdGuaranteeFunds,
             final LoanProductGuaranteeData loanProductGuaranteeData, final BigDecimal principalThresholdForLastInstallment,
             final boolean accountMovesOutOfNPAOnlyOnArrearsCompletion, boolean canDefineInstallmentAmount,
-            Integer installmentAmountInMultiplesOf, LoanProductConfigurableAttributes allowAttributeOverrides,
+            BigDecimal installmentAmountInMultiplesOf, LoanProductConfigurableAttributes allowAttributeOverrides,
             boolean isLinkedToFloatingInterestRates, Integer floatingRateId, String floatingRateName, BigDecimal interestRateDifferential,
             BigDecimal minDifferentialLendingRate, BigDecimal defaultDifferentialLendingRate, BigDecimal maxDifferentialLendingRate,
             boolean isFloatingInterestRateCalculationAllowed, final boolean isVariableInstallmentsAllowed,

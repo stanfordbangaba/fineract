@@ -285,7 +285,7 @@ public class CollectionSheetReadPlatformServiceImpl implements CollectionSheetRe
             final String currencyNameCode = rs.getString("currencyNameCode");
             final String currencyDisplaySymbol = rs.getString("currencyDisplaySymbol");
             final Integer currencyDigits = JdbcSupport.getInteger(rs, "currencyDigits");
-            final Integer inMultiplesOf = JdbcSupport.getInteger(rs, "inMultiplesOf");
+            final BigDecimal inMultiplesOf = JdbcSupport.getBigDecimalDefaultToZeroIfNull(rs, "inMultiplesOf");
             CurrencyData currencyData = null;
             if (currencyCode != null) {
                 currencyData = new CurrencyData(currencyCode, currencyName, currencyDigits, inMultiplesOf, currencyDisplaySymbol,
@@ -651,7 +651,7 @@ public class CollectionSheetReadPlatformServiceImpl implements CollectionSheetRe
             final String currencyNameCode = rs.getString("currencyNameCode");
             final String currencyDisplaySymbol = rs.getString("currencyDisplaySymbol");
             final Integer currencyDigits = JdbcSupport.getInteger(rs, "currencyDigits");
-            final Integer inMultiplesOf = JdbcSupport.getInteger(rs, "inMultiplesOf");
+            final BigDecimal inMultiplesOf = JdbcSupport.getBigDecimalDefaultToZeroIfNull(rs, "inMultiplesOf");
             final String depositAccountType = rs.getString("depositAccountType");
             // currency
             final CurrencyData currency = new CurrencyData(currencyCode, currencyName, currencyDigits, inMultiplesOf, currencyDisplaySymbol,
@@ -776,7 +776,7 @@ public class CollectionSheetReadPlatformServiceImpl implements CollectionSheetRe
             final String currencyNameCode = rs.getString("currencyNameCode");
             final String currencyDisplaySymbol = rs.getString("currencyDisplaySymbol");
             final Integer currencyDigits = JdbcSupport.getInteger(rs, "currencyDigits");
-            final Integer inMultiplesOf = JdbcSupport.getInteger(rs, "inMultiplesOf");
+            final BigDecimal inMultiplesOf = JdbcSupport.getBigDecimalDefaultToZeroIfNull(rs, "inMultiplesOf");
             CurrencyData currencyData = null;
             if (currencyCode != null) {
                 currencyData = new CurrencyData(currencyCode, currencyName, currencyDigits, inMultiplesOf, currencyDisplaySymbol,

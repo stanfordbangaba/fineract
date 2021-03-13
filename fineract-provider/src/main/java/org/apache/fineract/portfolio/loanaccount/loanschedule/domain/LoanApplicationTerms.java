@@ -166,7 +166,7 @@ public final class LoanApplicationTerms {
     private final boolean allowCompoundingOnEod;
 
     private final BigDecimal principalThresholdForLastInstalment;
-    private final Integer installmentAmountInMultiplesOf;
+    private final BigDecimal installmentAmountInMultiplesOf;
 
     private final LoanPreClosureInterestCalculationStrategy preClosureInterestCalculationStrategy;
 
@@ -224,7 +224,7 @@ public final class LoanApplicationTerms {
             final CalendarInstance restCalendarInstance,
             final InterestRecalculationCompoundingMethod interestRecalculationCompoundingMethod,
             final CalendarInstance compoundingCalendarInstance, final RecalculationFrequencyType compoundingFrequencyType,
-            final BigDecimal principalThresholdForLastInstalment, final Integer installmentAmountInMultiplesOf,
+            final BigDecimal principalThresholdForLastInstalment, final BigDecimal installmentAmountInMultiplesOf,
             final LoanPreClosureInterestCalculationStrategy preClosureInterestCalculationStrategy, final Calendar loanCalendar,
             BigDecimal approvedAmount, List<LoanTermVariationsData> loanTermVariations,
             Boolean isInterestChargedFromDateSameAsDisbursalDateEnabled, final Integer numberOfDays,
@@ -254,7 +254,7 @@ public final class LoanApplicationTerms {
             final LocalDate calculatedRepaymentsStartingFromDate, final Money inArrearsTolerance,
             final LoanProductRelatedDetail loanProductRelatedDetail, final boolean multiDisburseLoan, final BigDecimal emiAmount,
             final List<DisbursementData> disbursementDatas, final BigDecimal maxOutstandingBalance, final LocalDate interestChargedFromDate,
-            final BigDecimal principalThresholdForLastInstalment, final Integer installmentAmountInMultiplesOf,
+            final BigDecimal principalThresholdForLastInstalment, final BigDecimal installmentAmountInMultiplesOf,
             final RecalculationFrequencyType recalculationFrequencyType, final CalendarInstance restCalendarInstance,
             final InterestRecalculationCompoundingMethod compoundingMethod, final CalendarInstance compoundingCalendarInstance,
             final RecalculationFrequencyType compoundingFrequencyType,
@@ -280,7 +280,7 @@ public final class LoanApplicationTerms {
             final LocalDate calculatedRepaymentsStartingFromDate, final Money inArrearsTolerance,
             final LoanProductRelatedDetail loanProductRelatedDetail, final boolean multiDisburseLoan, final BigDecimal emiAmount,
             final List<DisbursementData> disbursementDatas, final BigDecimal maxOutstandingBalance, final LocalDate interestChargedFromDate,
-            final BigDecimal principalThresholdForLastInstalment, final Integer installmentAmountInMultiplesOf,
+            final BigDecimal principalThresholdForLastInstalment, final BigDecimal installmentAmountInMultiplesOf,
             final RecalculationFrequencyType recalculationFrequencyType, final CalendarInstance restCalendarInstance,
             final InterestRecalculationCompoundingMethod compoundingMethod, final CalendarInstance compoundingCalendarInstance,
             final RecalculationFrequencyType compoundingFrequencyType,
@@ -339,7 +339,7 @@ public final class LoanApplicationTerms {
             final LocalDate interestChargedFromDate, final LoanInterestRecalculationDetails interestRecalculationDetails,
             final CalendarInstance restCalendarInstance, final RecalculationFrequencyType recalculationFrequencyType,
             final CalendarInstance compoundingCalendarInstance, final RecalculationFrequencyType compoundingFrequencyType,
-            final BigDecimal principalThresholdForLastInstalment, final Integer installmentAmountInMultiplesOf,
+            final BigDecimal principalThresholdForLastInstalment, final BigDecimal installmentAmountInMultiplesOf,
             final LoanPreClosureInterestCalculationStrategy loanPreClosureInterestCalculationStrategy, final Calendar loanCalendar,
             BigDecimal approvedAmount, final BigDecimal annualNominalInterestRate, final List<LoanTermVariationsData> loanTermVariations,
             Integer numberOfDays, boolean isSkipRepaymentOnFirstDayOfMonth, final HolidayDetailDTO holidayDetailDTO,
@@ -434,7 +434,7 @@ public final class LoanApplicationTerms {
             final InterestRecalculationCompoundingMethod interestRecalculationCompoundingMethod,
             final CalendarInstance restCalendarInstance, final RecalculationFrequencyType recalculationFrequencyType,
             final CalendarInstance compoundingCalendarInstance, final RecalculationFrequencyType compoundingFrequencyType,
-            final BigDecimal principalThresholdForLastInstalment, final Integer installmentAmountInMultiplesOf,
+            final BigDecimal principalThresholdForLastInstalment, final BigDecimal installmentAmountInMultiplesOf,
             final LoanPreClosureInterestCalculationStrategy preClosureInterestCalculationStrategy, final Calendar loanCalendar,
             BigDecimal approvedAmount, List<LoanTermVariationsData> loanTermVariations,
             final CalendarHistoryDataWrapper calendarHistoryDataWrapper, Boolean isInterestChargedFromDateSameAsDisbursalDateEnabled,
@@ -1224,9 +1224,9 @@ public final class LoanApplicationTerms {
             double installmentAmount = FinanicalFunctions.pmt(periodicInterestRate.doubleValue(), periodsRemaining.doubleValue(),
                     principalDouble, futureValue, false);
 
-            if (this.installmentAmountInMultiplesOf != null) {
-                installmentAmount = Money.roundToMultiplesOf(installmentAmount, this.installmentAmountInMultiplesOf);
-            }
+            // if (this.installmentAmountInMultiplesOf != null) {
+            // installmentAmount = Money.roundToMultiplesOf(installmentAmount, this.installmentAmountInMultiplesOf);
+            // }
             setFixedEmiAmount(BigDecimal.valueOf(installmentAmount));
         }
         return getFixedEmiAmount().doubleValue();

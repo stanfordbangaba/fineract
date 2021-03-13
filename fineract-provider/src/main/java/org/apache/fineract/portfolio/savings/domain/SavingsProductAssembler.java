@@ -91,7 +91,7 @@ public class SavingsProductAssembler {
 
         final String currencyCode = command.stringValueOfParameterNamed(currencyCodeParamName);
         final Integer digitsAfterDecimal = command.integerValueOfParameterNamed(digitsAfterDecimalParamName);
-        final Integer inMultiplesOf = command.integerValueOfParameterNamed(inMultiplesOfParamName);
+        final BigDecimal inMultiplesOf = command.bigDecimalValueOfParameterNamed(inMultiplesOfParamName);
         final MonetaryCurrency currency = new MonetaryCurrency(currencyCode, digitsAfterDecimal, inMultiplesOf);
 
         final BigDecimal interestRate = command.bigDecimalValueOfParameterNamed(nominalAnnualInterestRateParamName);

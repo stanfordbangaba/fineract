@@ -662,7 +662,7 @@ public class LoanReadPlatformServiceImpl implements LoanReadPlatformService {
             final String currencyNameCode = rs.getString("currencyNameCode");
             final String currencyDisplaySymbol = rs.getString("currencyDisplaySymbol");
             final Integer currencyDigits = JdbcSupport.getInteger(rs, "currencyDigits");
-            final Integer inMultiplesOf = JdbcSupport.getInteger(rs, "inMultiplesOf");
+            final BigDecimal inMultiplesOf = JdbcSupport.getBigDecimalDefaultToZeroIfNull(rs, "inMultiplesOf");
             final CurrencyData currencyData = new CurrencyData(currencyCode, currencyName, currencyDigits, inMultiplesOf,
                     currencyDisplaySymbol, currencyNameCode);
 
@@ -1286,7 +1286,7 @@ public class LoanReadPlatformServiceImpl implements LoanReadPlatformService {
             final String currencyNameCode = rs.getString("currencyNameCode");
             final String currencyDisplaySymbol = rs.getString("currencyDisplaySymbol");
             final Integer currencyDigits = JdbcSupport.getInteger(rs, "currencyDigits");
-            final Integer inMultiplesOf = JdbcSupport.getInteger(rs, "inMultiplesOf");
+            final BigDecimal inMultiplesOf = JdbcSupport.getBigDecimalDefaultToZeroIfNull(rs, "inMultiplesOf");
             final CurrencyData currencyData = new CurrencyData(currencyCode, currencyName, currencyDigits, inMultiplesOf,
                     currencyDisplaySymbol, currencyNameCode);
 
@@ -1699,7 +1699,7 @@ public class LoanReadPlatformServiceImpl implements LoanReadPlatformService {
             final String currencyNameCode = rs.getString("currencyNameCode");
             final String currencyDisplaySymbol = rs.getString("currencyDisplaySymbol");
             final Integer currencyDigits = JdbcSupport.getInteger(rs, "currencyDigits");
-            final Integer inMultiplesOf = JdbcSupport.getInteger(rs, "inMultiplesOf");
+            final BigDecimal inMultiplesOf = JdbcSupport.getBigDecimalDefaultToZeroIfNull(rs, "inMultiplesOf");
             final CurrencyData currencyData = new CurrencyData(currencyCode, currencyName, currencyDigits, inMultiplesOf,
                     currencyDisplaySymbol, currencyNameCode);
 
@@ -1753,7 +1753,7 @@ public class LoanReadPlatformServiceImpl implements LoanReadPlatformService {
             final String currencyNameCode = rs.getString("currencyNameCode");
             final String currencyDisplaySymbol = rs.getString("currencyDisplaySymbol");
             final Integer currencyDigits = JdbcSupport.getInteger(rs, "currencyDigits");
-            final Integer inMultiplesOf = JdbcSupport.getInteger(rs, "inMultiplesOf");
+            final BigDecimal inMultiplesOf = JdbcSupport.getBigDecimalDefaultToZeroIfNull(rs, "inMultiplesOf");
             final CurrencyData currencyData = new CurrencyData(currencyCode, currencyName, currencyDigits, inMultiplesOf,
                     currencyDisplaySymbol, currencyNameCode);
             final LocalDate accruedTill = null;
@@ -2173,7 +2173,7 @@ public class LoanReadPlatformServiceImpl implements LoanReadPlatformService {
             final String currencyNameCode = rs.getString("currencyNameCode");
             final String currencyDisplaySymbol = rs.getString("currencyDisplaySymbol");
             final Integer currencyDigits = JdbcSupport.getInteger(rs, "currencyDigits");
-            final Integer inMultiplesOf = JdbcSupport.getInteger(rs, "inMultiplesOf");
+            final BigDecimal inMultiplesOf = JdbcSupport.getBigDecimalDefaultToZeroIfNull(rs, "inMultiplesOf");
             return new CurrencyData(currencyCode, currencyName, currencyDigits, inMultiplesOf, currencyDisplaySymbol, currencyNameCode);
         }
 

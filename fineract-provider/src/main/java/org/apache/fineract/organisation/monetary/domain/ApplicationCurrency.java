@@ -18,6 +18,7 @@
  */
 package org.apache.fineract.organisation.monetary.domain;
 
+import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -36,7 +37,7 @@ public class ApplicationCurrency extends AbstractPersistableCustom {
     private Integer decimalPlaces;
 
     @Column(name = "currency_multiplesof")
-    private Integer inMultiplesOf;
+    private BigDecimal inMultiplesOf;
 
     @Column(name = "name", nullable = false, length = 50)
     private String name;
@@ -56,12 +57,12 @@ public class ApplicationCurrency extends AbstractPersistableCustom {
         this.displaySymbol = null;
     }
 
-    public static ApplicationCurrency from(final ApplicationCurrency currency, final int decimalPlaces, final Integer inMultiplesOf) {
+    public static ApplicationCurrency from(final ApplicationCurrency currency, final int decimalPlaces, final BigDecimal inMultiplesOf) {
         return new ApplicationCurrency(currency.code, currency.name, decimalPlaces, inMultiplesOf, currency.nameCode,
                 currency.displaySymbol);
     }
 
-    private ApplicationCurrency(final String code, final String name, final int decimalPlaces, final Integer inMultiplesOf,
+    private ApplicationCurrency(final String code, final String name, final int decimalPlaces, final BigDecimal inMultiplesOf,
             final String nameCode, final String displaySymbol) {
         this.code = code;
         this.name = name;
@@ -83,7 +84,7 @@ public class ApplicationCurrency extends AbstractPersistableCustom {
         return this.decimalPlaces;
     }
 
-    public Integer getCurrencyInMultiplesOf() {
+    public BigDecimal getCurrencyInMultiplesOf() {
         return this.inMultiplesOf;
     }
 
@@ -99,7 +100,7 @@ public class ApplicationCurrency extends AbstractPersistableCustom {
         return new CurrencyData(this.code, this.name, this.decimalPlaces, this.inMultiplesOf, this.displaySymbol, this.nameCode);
     }
 
-    public CurrencyData toData(final int digitsAfterDecimalSupported, final Integer inMultiplesOf) {
+    public CurrencyData toData(final int digitsAfterDecimalSupported, final BigDecimal inMultiplesOf) {
         return new CurrencyData(this.code, this.name, digitsAfterDecimalSupported, inMultiplesOf, this.displaySymbol, this.nameCode);
     }
 

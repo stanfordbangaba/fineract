@@ -19,6 +19,7 @@
 package org.apache.fineract.organisation.monetary.data;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /**
@@ -29,7 +30,7 @@ public class CurrencyData implements Serializable {
     private final String code;
     private final String name;
     private final int decimalPlaces;
-    private final Integer inMultiplesOf;
+    private final BigDecimal inMultiplesOf;
     private final String displaySymbol;
     @SuppressWarnings("unused")
     private final String nameCode;
@@ -37,7 +38,7 @@ public class CurrencyData implements Serializable {
     private final String displayLabel;
 
     public static CurrencyData blank() {
-        return new CurrencyData("", "", 0, 0, "", "");
+        return new CurrencyData("", "", 0, BigDecimal.ZERO, "", "");
     }
 
     public CurrencyData(String code) {
@@ -50,7 +51,7 @@ public class CurrencyData implements Serializable {
         this.displayLabel = null;
     }
 
-    public CurrencyData(final String code, final String name, final int decimalPlaces, final Integer inMultiplesOf,
+    public CurrencyData(final String code, final String name, final int decimalPlaces, final BigDecimal inMultiplesOf,
             final String displaySymbol, final String nameCode) {
         this.code = code;
         this.name = name;
@@ -69,7 +70,7 @@ public class CurrencyData implements Serializable {
         return this.decimalPlaces;
     }
 
-    public Integer currencyInMultiplesOf() {
+    public BigDecimal currencyInMultiplesOf() {
         return this.inMultiplesOf;
     }
 

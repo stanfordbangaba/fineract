@@ -18,6 +18,7 @@
  */
 package org.apache.fineract.organisation.office.domain;
 
+import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -38,7 +39,7 @@ public class OrganisationCurrency extends AbstractPersistableCustom {
     private Integer decimalPlaces;
 
     @Column(name = "currency_multiplesof")
-    private Integer inMultiplesOf;
+    private BigDecimal inMultiplesOf;
 
     @Column(name = "name", nullable = false, length = 50)
     private String name;
@@ -58,7 +59,7 @@ public class OrganisationCurrency extends AbstractPersistableCustom {
         this.displaySymbol = null;
     }
 
-    public OrganisationCurrency(final String code, final String name, final int decimalPlaces, final Integer inMultiplesOf,
+    public OrganisationCurrency(final String code, final String name, final int decimalPlaces, final BigDecimal inMultiplesOf,
             final String nameCode, final String displaySymbol) {
         this.code = code;
         this.name = name;

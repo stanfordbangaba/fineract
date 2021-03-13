@@ -82,7 +82,7 @@ public class SavingsProductSheetPopulator extends AbstractWorkbookPopulator {
             writeString(CURRENCY_COL, row, currency.code());
             writeInt(DECIMAL_PLACES_COL, row, currency.decimalPlaces());
             if (currency.currencyInMultiplesOf() != null) {
-                writeInt(IN_MULTIPLES_OF_COL, row, currency.currencyInMultiplesOf());
+                writeBigDecimal(IN_MULTIPLES_OF_COL, row, currency.currencyInMultiplesOf());
             }
             writeBoolean(WITHDRAWAL_FEE_COL, row, product.isWithdrawalFeeForTransfers());
             writeBoolean(ALLOW_OVERDRAFT_COL, row, product.isAllowOverdraft());

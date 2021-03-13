@@ -76,7 +76,7 @@ public class ClientChargeReadPlatformServiceImpl implements ClientChargeReadPlat
             final String currencyNameCode = rs.getString("currencyNameCode");
             final String currencyDisplaySymbol = rs.getString("currencyDisplaySymbol");
             final Integer currencyDecimalPlaces = JdbcSupport.getInteger(rs, "currencyDecimalPlaces");
-            final Integer inMultiplesOf = JdbcSupport.getInteger(rs, "inMultiplesOf");
+            final BigDecimal inMultiplesOf = JdbcSupport.getBigDecimalDefaultToZeroIfNull(rs, "inMultiplesOf");
             final CurrencyData currency = new CurrencyData(currencyCode, currencyName, currencyDecimalPlaces, inMultiplesOf,
                     currencyDisplaySymbol, currencyNameCode);
 

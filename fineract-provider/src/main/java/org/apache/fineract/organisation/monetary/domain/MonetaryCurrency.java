@@ -18,6 +18,7 @@
  */
 package org.apache.fineract.organisation.monetary.domain;
 
+import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
@@ -31,15 +32,15 @@ public class MonetaryCurrency {
     private int digitsAfterDecimal;
 
     @Column(name = "currency_multiplesof")
-    private Integer inMultiplesOf;
+    private BigDecimal inMultiplesOf;
 
     protected MonetaryCurrency() {
         this.code = null;
         this.digitsAfterDecimal = 0;
-        this.inMultiplesOf = 0;
+        this.inMultiplesOf = BigDecimal.ZERO;
     }
 
-    public MonetaryCurrency(final String code, final int digitsAfterDecimal, final Integer inMultiplesOf) {
+    public MonetaryCurrency(final String code, final int digitsAfterDecimal, final BigDecimal inMultiplesOf) {
         this.code = code;
         this.digitsAfterDecimal = digitsAfterDecimal;
         this.inMultiplesOf = inMultiplesOf;
@@ -62,7 +63,7 @@ public class MonetaryCurrency {
         return this.digitsAfterDecimal;
     }
 
-    public Integer getCurrencyInMultiplesOf() {
+    public BigDecimal getCurrencyInMultiplesOf() {
         return this.inMultiplesOf;
     }
 }

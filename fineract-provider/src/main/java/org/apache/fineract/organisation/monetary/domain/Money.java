@@ -34,7 +34,7 @@ public class Money implements Comparable<Money> {
     private int currencyDigitsAfterDecimal;
 
     @Column(name = "currency_multiplesof")
-    private Integer inMultiplesOf;
+    private BigDecimal inMultiplesOf;
 
     @Column(name = "amount", scale = 6, precision = 19)
     private BigDecimal amount;
@@ -74,11 +74,11 @@ public class Money implements Comparable<Money> {
     protected Money() {
         this.currencyCode = null;
         this.currencyDigitsAfterDecimal = 0;
-        this.inMultiplesOf = 0;
+        this.inMultiplesOf = BigDecimal.ZERO;
         this.amount = null;
     }
 
-    private Money(final String currencyCode, final int digitsAfterDecimal, final BigDecimal amount, final Integer inMultiplesOf) {
+    private Money(final String currencyCode, final int digitsAfterDecimal, final BigDecimal amount, final BigDecimal inMultiplesOf) {
         this.currencyCode = currencyCode;
         this.currencyDigitsAfterDecimal = digitsAfterDecimal;
         this.inMultiplesOf = inMultiplesOf;
@@ -88,10 +88,11 @@ public class Money implements Comparable<Money> {
         BigDecimal amountScaled = amountStripped;
 
         // round monetary amounts into multiplesof say 20/50.
-        if (inMultiplesOf != null && this.currencyDigitsAfterDecimal == 0 && inMultiplesOf > 0 && amountScaled.doubleValue() > 0) {
-            final double existingVal = amountScaled.doubleValue();
-            amountScaled = BigDecimal.valueOf(roundToMultiplesOf(existingVal, inMultiplesOf));
-        }
+        // if (inMultiplesOf != null && this.currencyDigitsAfterDecimal == 0 && inMultiplesOf > 0 &&
+        // amountScaled.doubleValue() > 0) {
+        // final double existingVal = amountScaled.doubleValue();
+        // amountScaled = BigDecimal.valueOf(roundToMultiplesOf(existingVal, inMultiplesOf));
+        // }
         this.amount = amountScaled.setScale(this.currencyDigitsAfterDecimal, MoneyHelper.getRoundingMode());
     }
 
@@ -316,7 +317,7 @@ public class Money implements Comparable<Money> {
         return this.currencyDigitsAfterDecimal;
     }
 
-    public Integer getCurrencyInMultiplesOf() {
+    public BigDecimal getCurrencyInMultiplesOf() {
         return this.inMultiplesOf;
     }
 
