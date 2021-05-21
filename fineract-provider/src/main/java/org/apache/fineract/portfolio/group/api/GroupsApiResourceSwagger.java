@@ -165,7 +165,7 @@ final class GroupsApiResourceSwagger {
 
             @Schema(example = "[2013, 11, 14]")
             public LocalDate activatedOnDate;
-            @Schema(example = "esol")
+            @Schema(example = "admin")
             public String activatedByUsername;
             @Schema(example = "App")
             public String activatedByFirstname;

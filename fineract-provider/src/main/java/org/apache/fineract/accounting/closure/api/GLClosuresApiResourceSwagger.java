@@ -55,11 +55,11 @@ final class GLClosuresApiResourceSwagger {
         public LocalDate lastUpdatedDate;
         @Schema(example = "1")
         public Long createdByUserId;
-        @Schema(example = "esol")
+        @Schema(example = "admin")
         public String createdByUsername;
         @Schema(example = "1")
         public Long lastUpdatedByUserId;
-        @Schema(example = "esol")
+        @Schema(example = "admin")
         public String lastUpdatedByUsername;
         @Schema(example = "closed")
         public String comments;

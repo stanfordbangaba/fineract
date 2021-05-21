@@ -43,7 +43,7 @@ public class SpringBootServerLoginTest extends AbstractSpringBootWithMariaDB4jIn
     public void hasPlatformStarted() {
         util = new RestAssuredFixture(8443);
         List<Map<String, String>> response = util.httpGet("/users");
-        assertThat(response.get(0).get("username"), is("esol"));
+        assertThat(response.get(0).get("username"), is("admin"));
     }
 
 }

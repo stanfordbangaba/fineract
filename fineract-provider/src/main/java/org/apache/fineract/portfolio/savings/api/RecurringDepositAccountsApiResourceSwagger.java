@@ -92,7 +92,7 @@ final class RecurringDepositAccountsApiResourceSwagger {
 
             @Schema(example = "[2014, 3, 1]")
             public LocalDate submittedOnDate;
-            @Schema(example = "esol")
+            @Schema(example = "admin")
             public String submittedByUsername;
             @Schema(example = "App")
             public String submittedByFirstname;

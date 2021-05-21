@@ -148,7 +148,7 @@ modernizer {
 }
 
 compileJava {
-    dependsOn rat
+    //    dependsOn rat
     finalizedBy resolve
 }
 
@@ -234,7 +234,7 @@ task setBlankPassword {
     doLast {
         def sql = Sql.newInstance( 'jdbc:mysql:thin://localhost:3306/', mysqlUser, mysqlPassword, 'org.drizzle.jdbc.DrizzleDriver' )
         sql.execute('USE `fineract_tenants`')
-        sql.execute('UPDATE fineract_tenants.tenants SET schema_server = \'localhost\', schema_server_port = \'3306\', schema_username = \'esol\', schema_password = \'mysql\' WHERE id=1;')
+        sql.execute('UPDATE fineract_tenants.tenants SET schema_server = \'localhost\', schema_server_port = \'3306\', schema_username = \'admin\', schema_password = \'mysql\' WHERE id=1;')
     }
 }
 

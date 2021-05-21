@@ -190,7 +190,7 @@ final class ClientsApiResourceSwagger {
 
             @Schema(example = "[2013, 1, 1]")
             public LocalDate submittedOnDate;
-            @Schema(example = "esol")
+            @Schema(example = "admin")
             public String submittedByUsername;
             @Schema(example = "App")
             public String submittedByFirstname;
@@ -198,7 +198,7 @@ final class ClientsApiResourceSwagger {
             public String submittedByLastname;
             @Schema(example = "[2013, 1, 1]")
             public LocalDate activatedOnDate;
-            @Schema(example = "esol")
+            @Schema(example = "admin")
             public String activatedByUsername;
             @Schema(example = "App")
             public String activatedByFirstname;

@@ -88,7 +88,7 @@ allprojects  {
     apply plugin: 'io.spring.dependency-management'
     apply plugin: 'com.diffplug.spotless'
     apply plugin: 'com.github.hierynomus.license'
-    apply plugin: 'org.nosphere.apache.rat'
+    //    apply plugin: 'org.nosphere.apache.rat'
     apply plugin: 'project-report'
 
     // Configuration for the dependency management plugin
@@ -98,6 +98,7 @@ allprojects  {
             mavenBom 'org.springframework:spring-framework-bom:5.3.2'
             mavenBom 'org.springframework.boot:spring-boot-dependencies:2.3.5.RELEASE'
             mavenBom 'org.junit:junit-bom:5.7.0'
+            mavenBom 'org.springframework.boot:spring-boot-starter-mail:2.4.5'
         }
 
         dependencies {
@@ -261,91 +262,91 @@ allprojects  {
 
     // Configuration for Apache Release Audit Tool task
     // https://github.com/eskatos/creadur-rat-gradle
-    rat {
-        verbose = false
-        reportDir = file("$buildDir/reports/rat")
-        excludes = [
-            '**/src/main/templates/**/*.mustache',
-            '**/.dockerignore',
-            '**/*.launch',
-            '**/licenses/**',
-            '**/*.md',
-            '**/*.adoc',
-            '**/.asciidoctorconfig',
-            '**/*.puml',
-            '**/*.github/**',
-            '**/MANIFEST.MF',
-            '**/*.json',
-            '**/*.json.template',
-            '**/*.txt',
-            '**/*.log',
-            '**/fineractdev-eclipse-preferences.epf',
-            '**/template-expected.html',
-            '**/template.mustache',
-            '**/.classpath',
-            '**/.project',
-            '**/.idea/**',
-            '**/*.ipr',
-            '**/*.iws',
-            '**/.settings/**',
-            '**/bin/**',
-            '**/.git/**',
-            '**/.gitignore',
-            '**/.openapi-generator-ignore',
-            '**/.gitkeep',
-            '**/*.iml',
-            '**/config/swagger/templates/**',
-            // Notice files
-            '**/NOTICE_RELEASE',
-            '**/NOTICE_SOURCE',
-            // Swagger License
-            '**/src/main/resources/static/swagger-ui/**',
-            // gradle
-            '**/.gradle/**',
-            '**/gradlew',
-            '**/gradlew.bat',
-            '**/gradle/wrapper/gradle-wrapper.properties',
-            '**/caches/**',
-            '**/daemon/**',
-            '**/native/**',
-            '**/wrapper/**',
-            '**/build/**',
-            // Api Docs
-            '**/api-docs/*.*',
-            '**/docs/system-architecture/.htaccess',
-            '**/docs/system-architecture/404.html',
-            '**/docs/system-architecture/index.html',
-            '**/docs/system-architecture/**/*.xml',
-            '**/bootstrap-3.0.0/assets/application.js',
-            '**/system-architecture/js/plugins.js',
-            // Apache License
-            '**/bootstrap-3.0.0/assets/less.js',
-            '**/css/bootstrap-3.0.0/**/*.*',
-            // Public Domain See http://www.JSON.org/js.html
-            '**/bootstrap-3.0.0/assets/json2.js.htm',
-            // MIT License
-            '**/modernizr-2.6.2.min.js',
-            '**/css/normalize.css',
-            '**/assets/filesaver.js',
-            '**/css/fonts/glyphicons-halflings-regular.svg',
-            '**/assets/jszip.js',
-            '**/assets/jquery.js',
-            '**/api-docs/jquery-1.7.min.js',
-            '**/css/toc-0.1.2/**/*.*',
-            '**/docs/system-architecture/css/main.css',
-            '**/system-architecture/js/vendor/jquery-1.9.1.min.js',
-            '**/system-architecture/js/vendor/toc-0.1.2/jquery.toc.min.js',
-            '**/assets/respond.min.js',
-            '**/assets/html5shiv.js',
-            // BSD License
-            '**/assets/uglify.js',
-            // Ignore out folder
-            '**/out/**',
-            // Git build info
-            "**/git.properties",
-            ".mailmap",
-        ]
-    }
+    //    rat {
+    //        verbose = false
+    //        reportDir = file("$buildDir/reports/rat")
+    //        excludes = [
+    //            '**/src/main/templates/**/*.mustache',
+    //            '**/.dockerignore',
+    //            '**/*.launch',
+    //            '**/licenses/**',
+    //            '**/*.md',
+    //            '**/*.adoc',
+    //            '**/.asciidoctorconfig',
+    //            '**/*.puml',
+    //            '**/*.github/**',
+    //            '**/MANIFEST.MF',
+    //            '**/*.json',
+    //            '**/*.json.template',
+    //            '**/*.txt',
+    //            '**/*.log',
+    //            '**/fineractdev-eclipse-preferences.epf',
+    //            '**/template-expected.html',
+    //            '**/template.mustache',
+    //            '**/.classpath',
+    //            '**/.project',
+    //            '**/.idea/**',
+    //            '**/*.ipr',
+    //            '**/*.iws',
+    //            '**/.settings/**',
+    //            '**/bin/**',
+    //            '**/.git/**',
+    //            '**/.gitignore',
+    //            '**/.openapi-generator-ignore',
+    //            '**/.gitkeep',
+    //            '**/*.iml',
+    //            '**/config/swagger/templates/**',
+    //            // Notice files
+    //            '**/NOTICE_RELEASE',
+    //            '**/NOTICE_SOURCE',
+    //            // Swagger License
+    //            '**/src/main/resources/static/swagger-ui/**',
+    //            // gradle
+    //            '**/.gradle/**',
+    //            '**/gradlew',
+    //            '**/gradlew.bat',
+    //            '**/gradle/wrapper/gradle-wrapper.properties',
+    //            '**/caches/**',
+    //            '**/daemon/**',
+    //            '**/native/**',
+    //            '**/wrapper/**',
+    //            '**/build/**',
+    //            // Api Docs
+    //            '**/api-docs/*.*',
+    //            '**/docs/system-architecture/.htaccess',
+    //            '**/docs/system-architecture/404.html',
+    //            '**/docs/system-architecture/index.html',
+    //            '**/docs/system-architecture/**/*.xml',
+    //            '**/bootstrap-3.0.0/assets/application.js',
+    //            '**/system-architecture/js/plugins.js',
+    //            // Apache License
+    //            '**/bootstrap-3.0.0/assets/less.js',
+    //            '**/css/bootstrap-3.0.0/**/*.*',
+    //            // Public Domain See http://www.JSON.org/js.html
+    //            '**/bootstrap-3.0.0/assets/json2.js.htm',
+    //            // MIT License
+    //            '**/modernizr-2.6.2.min.js',
+    //            '**/css/normalize.css',
+    //            '**/assets/filesaver.js',
+    //            '**/css/fonts/glyphicons-halflings-regular.svg',
+    //            '**/assets/jszip.js',
+    //            '**/assets/jquery.js',
+    //            '**/api-docs/jquery-1.7.min.js',
+    //            '**/css/toc-0.1.2/**/*.*',
+    //            '**/docs/system-architecture/css/main.css',
+    //            '**/system-architecture/js/vendor/jquery-1.9.1.min.js',
+    //            '**/system-architecture/js/vendor/toc-0.1.2/jquery.toc.min.js',
+    //            '**/assets/respond.min.js',
+    //            '**/assets/html5shiv.js',
+    //            // BSD License
+    //            '**/assets/uglify.js',
+    //            // Ignore out folder
+    //            '**/out/**',
+    //            // Git build info
+    //            "**/git.properties",
+    //            ".mailmap",
+    //        ]
+    //    }
 }
 
 configure(project.fineractJavaProjects) {

@@ -39,7 +39,7 @@ final class UserDetailsApiResourceSwagger {
 
         }
 
-        @Schema(example = "esol")
+        @Schema(example = "admin")
         public String username;
         @Schema(example = "1")
         public Long userId;

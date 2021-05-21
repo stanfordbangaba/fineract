@@ -18,20 +18,23 @@
  */
 package org.apache.fineract.infrastructure.core.service;
 
-import org.apache.commons.mail.DefaultAuthenticator;
-import org.apache.commons.mail.Email;
-import org.apache.commons.mail.EmailException;
-import org.apache.commons.mail.SimpleEmail;
 import org.apache.fineract.infrastructure.configuration.data.SMTPCredentialsData;
 import org.apache.fineract.infrastructure.configuration.service.ExternalServicesPropertiesReadPlatformService;
 import org.apache.fineract.infrastructure.core.domain.EmailDetail;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 @Service
 public class GmailBackedPlatformEmailService implements PlatformEmailService {
 
+    private static final Logger LOG = LoggerFactory.getLogger(GmailBackedPlatformEmailService.class);
+
     private final ExternalServicesPropertiesReadPlatformService externalServicesReadPlatformService;
+
+    private final RestTemplate restTemplate = new RestTemplate();
 
     @Autowired
     public GmailBackedPlatformEmailService(final ExternalServicesPropertiesReadPlatformService externalServicesReadPlatformService) {
@@ -43,7 +46,7 @@ public class GmailBackedPlatformEmailService implements PlatformEmailService {
 
         final String subject = "Welcome " + contactName + " to " + organisationName;
         final String body = "You are receiving this email as your email account: " + address
-                + " has being used to create a user account for an organisation named [" + organisationName + "] on Mifos.\n"
+                + " has being used to create a user account for an organisation named [" + organisationName + "] on LMS.\n"
                 + "You can login using the following credentials:\nusername: " + username + "\n" + "password: " + unencodedPassword + "\n"
                 + "You must change this password upon first log in using Uppercase, Lowercase, number and character.\n"
                 + "Thank you and welcome to the organisation.";
@@ -55,31 +58,30 @@ public class GmailBackedPlatformEmailService implements PlatformEmailService {
 
     @Override
     public void sendDefinedEmail(EmailDetail emailDetails) {
-        final Email email = new SimpleEmail();
         final SMTPCredentialsData smtpCredentialsData = this.externalServicesReadPlatformService.getSMTPCredentials();
+
+        LOG.info("SMTP Credentials, username: {}, password: {}, host: {}, port: {}, fromEmail: {}, fromName: {}, useTLS: {}",
+                smtpCredentialsData.getUsername(), smtpCredentialsData.getPassword(), smtpCredentialsData.getHost(),
+                smtpCredentialsData.getPort(), smtpCredentialsData.getFromEmail(), smtpCredentialsData.getFromName(),
+                smtpCredentialsData.isUseTLS());
 
         final String authuser = smtpCredentialsData.getUsername();
         final String authpwd = smtpCredentialsData.getPassword();
 
-        // Very Important, Don't use email.setAuthentication()
-        email.setAuthenticator(new DefaultAuthenticator(authuser, authpwd));
-        email.setDebug(false); // true if you want to debug
-        email.setHostName(smtpCredentialsData.getHost());
-
         try {
-            if (smtpCredentialsData.isUseTLS()) {
-                // FINERACT-1070: NOT email.setSSLOnConnect(true); email.setSslSmtpPort(smtpCredentialsData.getPort());
-                email.setStartTLSRequired(true);
-            }
-            email.setSmtpPort(Integer.parseInt(smtpCredentialsData.getPort()));
-            email.setFrom(smtpCredentialsData.getFromEmail(), smtpCredentialsData.getFromName());
 
-            email.setSubject(emailDetails.getSubject());
-            email.setMsg(emailDetails.getBody());
+            emailDetails.setHost(smtpCredentialsData.getHost());
+            emailDetails.setMailDebug(false);
+            emailDetails.setUsername(authuser);
+            emailDetails.setPassword(authpwd);
+            emailDetails.setTlsEnable(smtpCredentialsData.isUseTLS());
+            emailDetails.setPort(Integer.parseInt(smtpCredentialsData.getPort()));
 
-            email.addTo(emailDetails.getAddress(), emailDetails.getContactName());
-            email.send();
-        } catch (EmailException e) {
+            final Object result = restTemplate.postForObject("http://localhost:8083/lms/api/v2/notifications/basic-email", emailDetails,
+                    Object.class);
+            LOG.info("Result");
+
+        } catch (Exception e) {
             throw new PlatformEmailSendException(e);
         }
     }

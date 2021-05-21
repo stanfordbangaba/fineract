@@ -54,13 +54,13 @@ final class NotesApiResourceSwagger {
         public String note;
         @Schema(example = "1")
         public Integer createdById;
-        @Schema(example = "esol")
+        @Schema(example = "admin")
         public String createdByUsername;
         @Schema(example = "1342498505000")
         public ZonedDateTime createdOn;
         @Schema(example = "1")
         public Integer updatedById;
-        @Schema(example = "esol")
+        @Schema(example = "admin")
         public String updatedByUsername;
         @Schema(example = "1342498517000")
         public ZonedDateTime updatedOn;
@@ -80,13 +80,13 @@ final class NotesApiResourceSwagger {
         public String note;
         @Schema(example = "1")
         public Integer createdById;
-        @Schema(example = "esol")
+        @Schema(example = "admin")
         public String createdByUsername;
         @Schema(example = "1359463135000")
         public ZonedDateTime createdOn;
         @Schema(example = "1")
         public Integer updatedById;
-        @Schema(example = "esol")
+        @Schema(example = "admin")
         public String updatedByUsername;
         @Schema(example = "1359463135000")
         public ZonedDateTime updatedOn;
