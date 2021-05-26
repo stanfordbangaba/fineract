@@ -449,6 +449,7 @@ public class AuditReadPlatformServiceImpl implements AuditReadPlatformService {
         sql += makercheckerCapabilityOnly(useType, currentUser);
         sql += " order by if(grouping = 'datatable', 'ZZZ', entity_name), entity_name";
         final EntityNamesMapper mapper2 = new EntityNamesMapper();
+        LOG.info("SQL :: {}", sql);
         final List<String> entityNames = this.jdbcTemplate.query(sql, mapper2);
 
         Collection<ProcessingResultLookup> processingResults = null;

@@ -1,0 +1,9 @@
+
+Fineract Post Configuration
+
+1. MySQL adjust the SQL mode of the server: Fix for Audit Trail
+
+SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
+SET SESSION sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
+
+Restart the container.
