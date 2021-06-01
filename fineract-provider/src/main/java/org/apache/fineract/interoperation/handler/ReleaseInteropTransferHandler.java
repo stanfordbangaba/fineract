@@ -16,32 +16,34 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.fineract.infrastructure.creditbureau.handler;
+package org.apache.fineract.interoperation.handler;
+
+import static org.apache.fineract.interoperation.util.InteropUtil.ACTION_TRANSFER_RELEASE;
+import static org.apache.fineract.interoperation.util.InteropUtil.ENTITY_NAME_TRANSFER;
 
 import org.apache.fineract.commands.annotation.CommandType;
 import org.apache.fineract.commands.handler.NewCommandSourceHandler;
 import org.apache.fineract.infrastructure.core.api.JsonCommand;
 import org.apache.fineract.infrastructure.core.data.CommandProcessingResult;
-import org.apache.fineract.infrastructure.creditbureau.service.CreditBureauLoanProductMappingWritePlatformService;
+import org.apache.fineract.interoperation.service.InteropService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@CommandType(entity = "CREDITBUREAU_LOANPRODUCT_MAPPING", action = "CREATE")
-public class CreateCreditBureauLoanProductMappingCommandHandler implements NewCommandSourceHandler {
+@CommandType(entity = ENTITY_NAME_TRANSFER, action = ACTION_TRANSFER_RELEASE)
+public class ReleaseInteropTransferHandler implements NewCommandSourceHandler {
 
-    private final CreditBureauLoanProductMappingWritePlatformService writePlatformService;
+    private final InteropService interopService;
 
     @Autowired
-    public CreateCreditBureauLoanProductMappingCommandHandler(
-            final CreditBureauLoanProductMappingWritePlatformService writePlatformService) {
-        this.writePlatformService = writePlatformService;
+    public ReleaseInteropTransferHandler(InteropService interopService) {
+        this.interopService = interopService;
     }
 
+    @Transactional
     @Override
-    public CommandProcessingResult processCommand(JsonCommand command) {
-
-        return this.writePlatformService.addCreditBureauLoanProductMapping(command.getOrganisationCreditBureauId(), command);
+    public CommandProcessingResult processCommand(final JsonCommand command) {
+        return this.interopService.releaseTransfer(command);
     }
-
 }

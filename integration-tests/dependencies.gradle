@@ -20,13 +20,13 @@ dependencies {
     // testCompile dependencies are ONLY used in src/test, not src/main.
     // Do NOT repeat dependencies which are ALREADY in implementation or runtimeOnly!
     //
-    tomcat 'org.apache.tomcat:tomcat:9.0.41@zip'
+    tomcat 'org.apache.tomcat:tomcat:9.0.46@zip'
     testImplementation( files("$rootDir/fineract-provider/build/classes/java/main/"),
             project(path: ':fineract-provider', configuration: 'runtimeElements'),
             project(path: ':fineract-client', configuration: 'runtimeElements'),
-            'org.junit.jupiter:junit-jupiter-api:5.7.0',
-            'com.google.truth:truth:1.0.1',
-            'com.google.truth.extensions:truth-java8-extension:1.0.1',
+            'org.junit.jupiter:junit-jupiter-api',
+            'com.google.truth:truth',
+            'com.google.truth.extensions:truth-java8-extension',
             'org.awaitility:awaitility',
             // 'com.google.code.gson:gson',
             )
@@ -41,6 +41,6 @@ dependencies {
         exclude group: 'com.sun.xml.bind'
     }
     testRuntimeOnly(
-            'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+            'org.junit.jupiter:junit-jupiter-engine'
             )
 }

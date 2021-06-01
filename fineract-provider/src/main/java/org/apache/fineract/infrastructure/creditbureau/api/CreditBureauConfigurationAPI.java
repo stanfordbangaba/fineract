@@ -19,6 +19,7 @@
 
 package org.apache.fineract.infrastructure.creditbureau.api;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
@@ -56,6 +57,7 @@ import org.springframework.stereotype.Component;
 @Path("/CreditBureauConfiguration")
 @Component
 @Scope("singleton")
+@Tag(name = "Credit Bureau Configuration", description = "")
 public class CreditBureauConfigurationAPI {
 
     private final Set<String> responseDataParameters = new HashSet<>(
@@ -231,13 +233,13 @@ public class CreditBureauConfigurationAPI {
     }
 
     @POST
-    @Path("/mappings/{CreditBureauId}")
+    @Path("/mappings/{organisationCreditBureauId}")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces({ MediaType.APPLICATION_JSON })
-    public String createCreditBureauLoanProductMapping(@PathParam("CreditBureauId") final Long CreditBureauId,
+    public String createCreditBureauLoanProductMapping(@PathParam("organisationCreditBureauId") final Long organisationCreditBureauId,
             final String apiRequestBodyAsJson) {
 
-        final CommandWrapper commandRequest = new CommandWrapperBuilder().createCreditBureauLoanProductMapping(CreditBureauId)
+        final CommandWrapper commandRequest = new CommandWrapperBuilder().createCreditBureauLoanProductMapping(organisationCreditBureauId)
                 .withJson(apiRequestBodyAsJson).build();
 
         final CommandProcessingResult result = this.commandsSourceWritePlatformService.logCommandSource(commandRequest);
